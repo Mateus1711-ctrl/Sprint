@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Devlife</title>
+  </head>
+  <body>
+    <div class="appbar">
+      <a href="{% url 'index'%}">
+        <img src="{% static 'img/school.png' %}" class="logo" />
+      </a>
+      <span class="subtitle">Cotidiano de Codificador</span>
+    </div>
+
+    <main class="container">{% block content %}{% endblock %}</main>
+  </body>
+</html>

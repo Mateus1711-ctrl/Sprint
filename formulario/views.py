@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from .models import Formulario
 
-# Create your views here.
+def index(request):
+    return render(request, 'formulario/index.html')

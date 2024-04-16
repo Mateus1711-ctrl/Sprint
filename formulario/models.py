@@ -4,7 +4,12 @@ from django.db import models
 from django.db import models
 
 class Formulario(models.Model):
-    title = models.CharField(max_length=200)
+    nome = models.CharField(max_length=200)
+    descricao = models.TextField(max_length=2000, blank=True, null=True)
+    pergunta = models.CharField(max_length=2000, blank=True, null=True)
+    data_criacao = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+    ativo = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
