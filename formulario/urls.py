@@ -5,5 +5,6 @@ from formulario import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('novo/', views.novo_usuario, name='novo_formulario')
+    path('novo/', views.cria_formulario, name='criar_formulario'),
+    path('formulario-feito/', views.formulario_feito, name='formulario_feito')
 ]
