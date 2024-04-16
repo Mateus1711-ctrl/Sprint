@@ -1,9 +1,27 @@
 {% extends "formulario/base.html" %}
 
 {% block content %}
-<h1>Bem-vindo ao Sistema de Gestão de Alunos</h1>
+<!-- <h1>Bem-vindo ao Sistema de Gestão de Alunos</h1>
 <div class="botoes-container">
     <a class="botao" href="/novo">Página de Cadastro</a>
     <a class="botao" href="/alunos">Listagem de Alunos</a>
-</div>
+</div> -->
+<body>
+    <header>
+        <h1>Sistema de Gestão de Formulários</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Bem-vindo!</h2>
+            <p>Com nosso sistema, você pode criar formulários personalizados e gerar PDFs para suas pesquisas.</p>
+            <div class="buttons-container">
+                <a class="button" href="/novo">Criar Novo Formulário</a>
+                <a class="button" href="/alunos">Visualizar Alunos</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sistema de Gestão de Formulários. Todos os direitos reservados.</p>
+    </footer>
+</body>
 {% endblock %}
