@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Formulario
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -18,8 +18,11 @@ def index(request):
         return redirect('index')
     else:
         all_forms = Formulario.objects.filter(author=request.user).order_by('-data_criacao')
-        return render(request, 'formulario/index.html', {'notes': all_forms, 'user': request.user})
+        return render(request, 'formulario/index.html', {'forms': all_forms, 'user': request.user})
 
 
+def editar(request, form_id):
+    form = Formulario.objects.get(pk=form_id)
+    perguntas = FormularioPergunta.objects.filter(formulario=form)
 
-
+    return render(request, "notes/update.html", {"form": form, "perguntas": perguntas})

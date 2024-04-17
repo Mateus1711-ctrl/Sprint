@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{ form.id }} - {{ form.nome }}
+
+    <form action="{% url 'update' note.id%}" method="POST">
+        {% csrf_token %}
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" name="titulo" value="{{note.title}}"/>
+      
+        <label for="descricao">Descricao</label>
+        <textarea id="descricao" name="descricao">{{form.descricao}}</textarea>
+
+        <label for="pergunta">Perguntas</label>
+        {{ % for pergunta in perguntas % }}
+        <p name="pergunta" id="pergunta">{{ pergunta }}</p>
+      
+        <input type="submit" />
+      </form>
+</body>
+</html>
