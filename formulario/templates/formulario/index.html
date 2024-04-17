@@ -1,6 +1,8 @@
 {% extends "formulario/base.html" %}
 
+
 {% block content %}
+
 
 <header>
     <h1>Sistema de Gestão de Formulários</h1>
@@ -11,15 +13,20 @@
         <p>Com nosso sistema, você pode criar formulários personalizados e gerar PDFs para suas pesquisas.</p>
         <div class="buttons-container">
             <a class="button" href="/novo">Criar Novo Formulário</a>
-            <a class="button" href="/alunos">Visualizar Alunos</a>
         </div>
-    {% for formulario in formularios %} 
-        <p>{{ formulario.nome }}</p>
-    {% endfor %}
     </div>
 
-    
+
+   
+        {% for formulario in formularios %}
+            <p class="caixas container">{{ formulario.nome }}</p>
+            <p class="container caixas_descricao">{{formulario.descricao}}</p>
+               
+        {% endfor %}
+     
 </main>
+
+
 <footer>
     <p>&copy; 2024 Sistema de Gestão de Formulários. Todos os direitos reservados.</p>
 </footer>
