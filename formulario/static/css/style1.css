@@ -75,3 +75,16 @@ footer {
     margin: 0 auto;
     width: 100%;
 }
+.caixas{
+    flex-direction: column ;
+    margin-top: 10%;
+    background-color: #248aca; 
+    font-family: "Open Sans";
+    font-size:  16px;
+  }
+.caixas_descricao{
+    margin-top: -2%;
+    width: 80% ;
+    
+    
+}
