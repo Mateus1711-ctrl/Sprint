@@ -18,6 +18,7 @@ def index(request):
         return redirect('index')
     else:
         all_forms = Formulario.objects.filter(author=request.user).order_by('-data_criacao')
+        print(all_forms)
         return render(request, 'formulario/index.html', {'formularios': all_forms, 'user': request.user})
 
 @login_required 
@@ -26,7 +27,8 @@ def cria_formulario(request) :
         nome = request.POST.get('nome')
         descricao = request.POST.get('descricao')
         pergunta = request.POST.get('pergunta')
-        formulario = Formulario(nome=nome, descricao=descricao, pergunta=pergunta)
+        author=request.user
+        formulario = Formulario(nome=nome, descricao=descricao, pergunta=pergunta,author=author)
         formulario.save()
         return redirect('formulario_feito')
     else :
