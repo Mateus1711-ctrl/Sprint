@@ -4,6 +4,7 @@ from django.urls import include, path
 from formulario import views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    # path('novo/', views.novo_usuario, name='novo_formulario')
+    path('deletar/<int:id_formulario>',views.deletar_formulario,name='deletar')
 ]
