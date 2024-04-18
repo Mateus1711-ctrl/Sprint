@@ -1,10 +1,109 @@
-/* Reset de Estilos */
+
+
+
+
+
+
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.error-message {
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 4px;
+    display: block;
+}
+
+.box {
+    background-color: rgba(0, 0, 0, 0.89);
+    border-radius: 3px;
+    padding: 40px;
+    width: 100%;
+    max-width: 320px; /* Limite a largura máxima */
+    margin: 20px;
+}
+
+.input-container {
+    position: relative;
+    margin: 10px 0;
+}
+
+.input-container label {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-container input {
+    background: transparent;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #555;
+    margin-bottom: 20px;
+}
+
+.input-container input:focus {
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+}
+
+.btn {
+    background-color: #e74c3c;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    width: 100%;
+    max-width: 200px; /* Define uma largura máxima para o botão */
+    margin: 20px auto;
+}
+
+.btn:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .box {
+        margin: 40px;
+        padding: 50px;
+    }
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -86,16 +185,40 @@ footer {
     margin: 0 auto;
     width: 100%;
 }
-.caixas{
-    flex-direction: column ;
-    margin-top: 10%;
-    background-color: #248aca;
-    font-family: "Open Sans";
-    font-size:  16px;
-  }
-.caixas_descricao{
-    margin-top: -2%;
-    width: 80% ;
-   
-   
+.caixas {
+    flex-direction: column;
+    margin-top: 10%; /* Ajustar conforme necessário */
+    background-color: #454d53; /* Cor mais suave que a anterior */
+    font-family: "Open Sans", sans-serif; /* Assegurando fallback */
+    font-size: 18px; /* Tamanho um pouco maior para melhor leitura */
+    padding: 20px; /* Espaço interno para melhor visualização do conteúdo */
+    margin-bottom: 10px; /* Espaço entre os elementos */
+    border-radius: 8px; /* Bordas arredondadas para um design moderno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil para destaque */
+    color: #fff; /* Cor do texto para contraste com o fundo escuro */
+}
+
+.caixas-descricao {
+    width: 100%;
+    background-color: #4090C8; /* Cor suavemente contrastante com a de .caixas */
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    padding: 15px; /* Espaço interno adequado */
+    margin-top: 5px; /* Espaço superior ajustado para melhor agrupamento visual */
+    border-radius: 6px; /* Consistência nas bordas arredondadas */
+    color: #fff; /* Mantendo o texto branco para visibilidade */
+}
+
+.sair {
+    background-color: #C9252D; /* Cor mais vívida para ação de sair */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer; /* Cursor de mão para indicar ação clicável */
+    text-decoration: none; /* Removendo sublinhado */
+    transition: background-color 0.3s ease;
+}
+
+.sair:hover {
+    background-color: #A51D24; /* Cor mais escura ao passar o mouse */
 }

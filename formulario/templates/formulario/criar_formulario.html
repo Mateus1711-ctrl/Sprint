@@ -2,17 +2,22 @@
 
 {% block content %}
 
-<h2> Criar Formulario</h2>
-<form method="post"> 
-    {% csrf_token %}
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
-    <br>
-    <label for="desricao">Descrição:</label>
-    <textarea id="desricao" name="descricao"></textarea>
-    <br>
-    <button type="submit">Enviar</button>
-</form>
+<h2 class="text-center">Criar Formulário</h2>
+<main>
+    <form method="post" class="box"> 
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="nome">Titulo:</label>
+            <input type="text" id="nome" name="nome" required class="input-container input">
+        </div>
+        
+        <div class="input-container">
+            <label for="descricao">Descrição:</label>
+            <input id="descricao" name="descricao" class="input-container input"></input>
+        </div>
+        
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+</main>
 
 {% endblock %}
-
