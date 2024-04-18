@@ -10,6 +10,6 @@ class Formulario(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
     ativo = models.BooleanField(default=True)
-
+    author = models.ForeignKey("auth.User", on_delete=models.CASCADE)
     def __str__(self):
-        return self.title
+        return self.nome

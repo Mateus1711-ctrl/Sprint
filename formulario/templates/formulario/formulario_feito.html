@@ -2,6 +2,11 @@
 
 {% block content %}
 <h2> Formulário criado com Sucesso!</h2>
-<a href="{% url 'criar_formulario' %}"> Criar outro Formulário</a>
+
+
+<a href="{% url 'criar_formulario' %}" class="btn">Criar outro Formulário</a>
+
+
+<a href="{% url 'index' %}" class="btn">Voltar para o Início</a>
 
 {% endblock %}
