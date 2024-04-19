@@ -1,12 +1,14 @@
 {% extends "formulario/base.html" %}
 
 {% block content %}
-<h2> Formulário criado com Sucesso!</h2>
 
+<div class="form-success-container">
+    <h2 class="form-success-title">Formulário criado com sucesso!</h2>
 
-<a href="{% url 'criar_formulario' %}" class="btn">Criar outro Formulário</a>
-
-
-<a href="{% url 'index' %}" class="btn">Voltar para o Início</a>
+    <div class="form-success-buttons">
+        <a href="{% url 'criar_formulario' %}" class="btn form-success-btn">Criar outro Formulário</a>
+        <a href="{% url 'index' %}" class="btn form-success-btn">Voltar para o Início</a>
+    </div>
+</div>
 
 {% endblock %}
