@@ -21,7 +21,10 @@
         {% for formulario in formularios %}
             <p class="caixas container">{{ formulario.nome }}</p>
             <p class="container caixas_descricao">{{formulario.descricao}}</p>
-            
+            <form action="{% url 'deletar' formulario.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="deletar-formulario">Deletar</button>
+            </form>
         {% endfor %}
      
 </main>

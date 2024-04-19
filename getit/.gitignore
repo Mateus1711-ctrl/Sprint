@@ -1,0 +1,34 @@
+# Dependency directories
+node_modules/
+venv/
+
+# Compiled code and build artifacts
+build/
+dist/
+*.class
+*.jar
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment-specific files
+.env
+*.env.local
+
+# User-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Sensitive information
+secrets.json
+*.key
