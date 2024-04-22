@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render,get_object_or_404,HttpResponseRedirect
-from .models import Formulario
+from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -12,7 +12,7 @@ def cadastro(request):
         cria_senha = request.POST.get('senha')
         # confirma_senha = request.POST.get('confirme sua senha')
         new_form = User.objects.create_user(username=usuario, first_name=nome, last_name=sobrenome, email=email, password=cria_senha)
-        new_form.save()
+        # create não pede save
 
         return redirect('index')
 
@@ -45,7 +45,6 @@ def edita_formulario(request):
         id_formulario = request.POST.get('id_formulario')
         nome = request.POST.get('nome')
         descricao = request.POST.get('descricao')
-        pergunta = request.POST.get('pergunta')
         formulario = Formulario.objects.get(id=id_formulario)
         formulario.nome = nome
         formulario.descricao = descricao
@@ -69,3 +68,14 @@ def deletar_formulario(request,id_formulario):
     else:
         return HttpResponseRedirect('/')
     
+@login_required
+def perguntas(request):
+    if request.method == 'POST' :
+        pergunta_de_texto = request.POST.get('pergunta de texto')
+        tipo = 'texto'
+        Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
+    
+
+        return redirect('perguntas')
+    else :
+        return render(request, 'perguntas/pergunta_de_texto.html')
