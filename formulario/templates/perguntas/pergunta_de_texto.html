@@ -1,0 +1,19 @@
+{% extends "formulario/base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">Criar pergunta - de texto</h2>
+<main>
+    <form method="post" class="box"> 
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="pergunta de texto">Enunciado:</label>
+            <input type="text" id="enunciado" name="pergunta de texto" required class="input-container input">
+        </div>
+        
+        
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+</main>
+
+{% endblock %}

@@ -9,5 +9,6 @@ urlpatterns = [
     path('deletar/<int:id_formulario>',views.deletar_formulario,name='deletar'),
     path('novo/', views.cria_formulario, name='criar_formulario'),
     path('formulario-feito/', views.formulario_feito, name='formulario_feito') ,
-    path('cadastro/', views.cadastro , name='cadastro')
+    path('cadastro/', views.cadastro , name='cadastro') ,
+    path('perguntas/',views.perguntas,name='perguntas')
 ]
