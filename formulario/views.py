@@ -48,7 +48,6 @@ def edita_formulario(request):
         formulario = Formulario.objects.get(id=id_formulario)
         formulario.nome = nome
         formulario.descricao = descricao
-        formulario.pergunta = pergunta
         formulario.save()
         return redirect('index')
     else:
@@ -79,3 +78,18 @@ def perguntas(request):
         return redirect('perguntas')
     else :
         return render(request, 'perguntas/pergunta_de_texto.html')
+    
+    # def edita_formulario(request):
+    # if request.method == 'POST':
+    #     id_formulario = request.POST.get('id_formulario')
+    #     nome = request.POST.get('nome')
+    #     descricao = request.POST.get('descricao')
+    #     formulario = Formulario.objects.get(id=id_formulario)
+    #     formulario.nome = nome
+    #     formulario.descricao = descricao
+    #     formulario.save()
+    #     return redirect('index')
+    # else:
+    #     id_formulario = request.GET.get('id_formulario')
+    #     formulario = Formulario.objects.get(id=id_formulario)
+        # return render(request, 'formulario/editar_formulario.html', {'formulario': formulario})
