@@ -79,6 +79,7 @@ def perguntas(request):
 def perguntas_feitas(request):
    return render(request, 'perguntas/perguntas_feitas.html')
 
+@login_required
 def listagem_perguntas(request):
     perguntas = Perguntas.objects.all()
     return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
