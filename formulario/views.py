@@ -84,6 +84,13 @@ def listagem_perguntas(request):
     perguntas = Perguntas.objects.all()
     return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
 
+def deletar_perguntas(request,id_pergunta):
+    perg=get_object_or_404(Perguntas,id=id_pergunta)
+    if request.method=='POST':
+        perg.delete()
+        return redirect('listagem_perguntas')
+    else:
+        return HttpResponseRedirect('/')
 # {'formularios': all_forms, 'user': request.user})
     
     # def edita_formulario(request):
