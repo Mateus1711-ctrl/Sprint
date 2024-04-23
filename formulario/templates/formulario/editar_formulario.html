@@ -1,0 +1,23 @@
+{% extends "formulario/base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">Editar Formulário</h2>
+<main>
+    <form method="post" class="box"> 
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="nome">Titulo:</label>
+            <input type="text" id="nome" name="nome" required class="input-container input" value="{{formulario.nome}}">
+        </div>
+        <div class="input-container">
+            <label for="descricao">Descrição:</label>
+            <input id="descricao" name="descricao" class="input-container input" value="{{formulario.descricao}}"></input>
+            
+        </div>
+        
+        <button type="submit" class="btn">salvar</button>
+    </form>
+</main>
+
+{% endblock %}
