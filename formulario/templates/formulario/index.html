@@ -25,10 +25,18 @@
         {% for formulario in formularios %}
             <p class="caixas container">{{ formulario.nome }}</p>
             <p class="container caixas_descricao">{{formulario.descricao}}</p>
-            <form action="{% url 'deletar' formulario.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="deletar-formulario">Deletar</button>
-            </form>
+            <div class="para_lado">
+
+                <form action="{% url 'editar' formulario.id %}" method="GET">
+                    {% csrf_token %}
+                    <button type="submit" class="editar-formulario">Editar</button>
+                </form>
+                <form action="{% url 'deletar' formulario.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="deletar-formulario">Deletar</button>
+                </form>
+            </div>
+            
         {% endfor %}
      
 </main>

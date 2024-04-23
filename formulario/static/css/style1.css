@@ -1,3 +1,22 @@
+.para_lado{
+    flex-direction: row;
+    display: flex;
+    justify-content:space-evenly;
+    
+}
+.editar-formulario{
+    background-color: #2655d6; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+.editar-formulario {
+    background-color: #2655d6;
+}
+
 .deletar-formulario{
     background-color: #dc3545; /* Vermelho */
     color: white;

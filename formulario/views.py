@@ -39,21 +39,17 @@ def cria_formulario(request) :
         return redirect('formulario_feito')
     else :
         return render(request, 'formulario/criar_formulario.html')
-    
-def edita_formulario(request):
+@login_required
+def edita_formulario(request,id_formulario):
+    form=get_object_or_404(Formulario,id=id_formulario)
     if request.method == 'POST':
-        id_formulario = request.POST.get('id_formulario')
-        nome = request.POST.get('nome')
-        descricao = request.POST.get('descricao')
-        formulario = Formulario.objects.get(id=id_formulario)
-        formulario.nome = nome
-        formulario.descricao = descricao
-        formulario.save()
+        
+        form.nome = request.POST.get('nome')
+        form.descricao = request.POST.get('descricao')
+        form.save()
         return redirect('index')
     else:
-        id_formulario = request.GET.get('id_formulario')
-        formulario = Formulario.objects.get(id=id_formulario)
-        return render(request, 'formulario/editar_formulario.html', {'formulario': formulario})
+        return render(request, 'formulario/editar_formulario.html', {'formulario': form})
 
 @login_required 
 def formulario_feito(request) :
