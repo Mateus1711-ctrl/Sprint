@@ -34,7 +34,7 @@ def cria_formulario(request) :
         descricao = request.POST.get('descricao')
         pergunta = request.POST.get('pergunta')
         author=request.user
-        formulario = Formulario(nome=nome, descricao=descricao, pergunta=pergunta,author=author)
+        formulario = Formulario(nome=nome, descricao=descricao,author=author)
         formulario.save()
         return redirect('formulario_feito')
     else :
@@ -72,12 +72,22 @@ def perguntas(request):
     if request.method == 'POST' :
         pergunta_de_texto = request.POST.get('pergunta de texto')
         tipo = 'texto'
-        Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
+        perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
     
 
-        return redirect('perguntas')
+        return redirect('perguntas_feitas')
     else :
         return render(request, 'perguntas/pergunta_de_texto.html')
+
+@login_required
+def perguntas_feitas(request):
+   return render(request, 'perguntas/perguntas_feitas.html')
+
+def listagem_perguntas(request):
+    perguntas = Perguntas.objects.all()
+    return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
+
+# {'formularios': all_forms, 'user': request.user})
     
     # def edita_formulario(request):
     # if request.method == 'POST':
