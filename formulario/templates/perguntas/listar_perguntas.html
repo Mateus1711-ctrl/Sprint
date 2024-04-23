@@ -7,6 +7,11 @@
     <ul>
         {%for pergunta in perguntas_de_texto%}
         <li>{{pergunta.pergunta_de_texto}}</li> <!-- 'classe'- var definida no fo, campo da model.-->
+        
+        <form action="/deletar-pergunta/{{pergunta.id}}" method="POST">   
+            {% csrf_token %}
+            <button type="submit" class="deletar-formulario">Deletar</button>
+        </form>
         {% endfor %}
 </div>
 {% endblock %}
