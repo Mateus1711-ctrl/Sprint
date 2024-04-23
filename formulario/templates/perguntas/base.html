@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão de Formulários</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+  <body>
+    <!-- logout apenas se já tiver logado -->
+    {% if user.is_authenticated %}  
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="sair">sair</button>
+    </form>      
+
+    {% endif %}
+
+    <main class="container">{% block content %}{% endblock %}</main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'formulario/base.html' %}
+{% block content %}
+
+<div class="forms">
+    <i class="bi bi-arrow-left-circle-fill"></i>   <h2>Perguntas</h2>
+
+    <ul>
+        {%for pergunta in perguntas_de_texto%}
+        <li>{{pergunta.pergunta_de_texto}}</li> <!-- 'classe'- var definida no fo, campo da model.-->
+        {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+ {% extends "formulario/base.html" %} <!--#trocar aqui por perguntas/base.html e trazer o arquivo para essa pasta também? -->
+
+{% block content %}
+
+<div class="form-success-container">
+    <h2 class="form-success-title">Pergunta elaborada!</h2>
+
+    <div class="form-success-buttons">
+        <a href="{% url 'perguntas' %}" 
+        class="btn form-success-btn">Criar outro enunciado</a>
+        <a href="{% url 'index' %}" 
+        class="btn form-success-btn">Voltar para o Início</a>
+        <a href="{% url 'listagem_perguntas' %}" 
+        class="btn form-success-btn">Veja as perguntas já existentes</a>
+    </div>
+</div>
+
+{% endblock %}
