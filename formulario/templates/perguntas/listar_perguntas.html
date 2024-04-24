@@ -17,6 +17,11 @@
             {% csrf_token %}
             <button type="submit" class="adicionar-pergunta">Adicionar</button>
         </form>
+        <form action="/editar-pergunta/{{ pergunta.id }}" method="GET">   
+            {% csrf_token %}
+            <button type="submit" class="editar-pergunta">Editar</button>
+        </form>
+    
         {% endfor %}
 </div>
 {% endblock %}
