@@ -99,3 +99,5 @@ def editar_perguntas(request, id_pergunta):
         return redirect('listagem_perguntas')
     else :
         return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
+    
+    
