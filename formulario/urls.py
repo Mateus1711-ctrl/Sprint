@@ -14,5 +14,6 @@ urlpatterns = [
     path('perguntas-feitas/', views.perguntas_feitas, name='perguntas_feitas') ,
     path('listagem-perguntas/', views.listagem_perguntas, name='listagem_perguntas'),
     path('editar/<int:id_formulario>',views.edita_formulario,name='editar') ,
-    path('deletar-pergunta/<int:id_pergunta>',views.deletar_perguntas,name='deletar_pergunta')
+    path('deletar-pergunta/<int:id_pergunta>',views.deletar_perguntas,name='deletar_pergunta'),
+    path('editar-pergunta/<int:id_pergunta>', views.editar_perguntas, name='editar-pergunta')
 ]

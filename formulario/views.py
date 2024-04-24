@@ -86,24 +86,16 @@ def listagem_perguntas(request):
 
 def deletar_perguntas(request,id_pergunta):
     perg=get_object_or_404(Perguntas,id=id_pergunta)
-    if request.method=='POST':
-        perg.delete()
+
+    perg.delete()
+    return redirect('listagem_perguntas')
+
+
+def editar_perguntas(request, id_pergunta):
+    perg= get_object_or_404(Perguntas, id=id_pergunta)
+    if request.method== 'POST':
+        perg.pergunta_de_texto = request.POST.get('pergunta_de_texto')
+        perg.save()
         return redirect('listagem_perguntas')
-    else:
-        return HttpResponseRedirect('/')
-# {'formularios': all_forms, 'user': request.user})
-    
-    # def edita_formulario(request):
-    # if request.method == 'POST':
-    #     id_formulario = request.POST.get('id_formulario')
-    #     nome = request.POST.get('nome')
-    #     descricao = request.POST.get('descricao')
-    #     formulario = Formulario.objects.get(id=id_formulario)
-    #     formulario.nome = nome
-    #     formulario.descricao = descricao
-    #     formulario.save()
-    #     return redirect('index')
-    # else:
-    #     id_formulario = request.GET.get('id_formulario')
-    #     formulario = Formulario.objects.get(id=id_formulario)
-        # return render(request, 'formulario/editar_formulario.html', {'formulario': formulario})
+    else :
+        return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
