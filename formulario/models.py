@@ -28,3 +28,8 @@ class Intervalos(models.Model):
     def __str__(self):
         return self.intervalo
     
+class FormularioPergunta(models.Model):
+    formulario = models.ForeignKey(Formulario, on_delete=models.CASCADE)
+    pergunta = models.ForeignKey(Perguntas, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.formulario.nome + ' - ' + self.pergunta.pergunta_de_texto

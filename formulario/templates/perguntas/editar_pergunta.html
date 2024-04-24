@@ -1,0 +1,17 @@
+{% extends "perguntas/base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">Editar Perguntas</h2>
+<main>
+    <form method="post" class="box"> 
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="pergunta_de_texto">Pergunta:</label>
+            <input type="text" id="pergunta_de_texto" name="pergunta_de_texto" required class="input-container input" value="{{pergunta.pergunta_de_texto}}">
+        </div> 
+        <button type="submit" class="btn">salvar</button>
+    </form>
+</main>
+
+{% endblock %}
