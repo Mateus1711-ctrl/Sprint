@@ -7,17 +7,19 @@
     <form method="post" class="box"> 
         {% csrf_token %}
         <div class="input-container">
-            <label for="nome">Titulo:</label>
-            <input type="text" id="nome" name="nome" required class="input-container input" value="{{formulario.nome}}">
+            <label for="nome">Título:</label>
+            <input type="text" id="nome" name="nome" required class="input-container input" value="{{ formulario.nome }}">
         </div>
         <div class="input-container">
             <label for="descricao">Descrição:</label>
-            <input id="descricao" name="descricao" class="input-container input" value="{{formulario.descricao}}"></input>
-            
+            <input type="text" id="descricao" name="descricao" required class="input-container input" value="{{ formulario.descricao }}">
         </div>
         
-        <button type="submit" class="btn">salvar</button>
+        <!-- Botão para salvar as alterações do formulário -->
+        <button type="submit" class="btn">Salvar</button>
     </form>
+
+    <a href="{% url 'perguntas_forms' formulario.id %}" class="btn">Gerenciar Perguntas</a>
 </main>
 
 {% endblock %}

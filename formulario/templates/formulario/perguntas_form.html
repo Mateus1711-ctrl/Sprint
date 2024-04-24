@@ -1,0 +1,16 @@
+{% extends 'formulario/base.html' %}
+{% block content %}
+
+<div class="forms">
+    <i class="bi bi-arrow-left-circle-fill"></i><h2>Formulários - Perguntas</h2>
+    <ul>
+        {% for pergunta in perguntas_de_texto %}
+        <li>{{ pergunta.pergunta_de_texto }} - <a href="">Editar</a> | <a href="">Deletar</a></li>
+        {% empty %}
+        <li>Nenhuma pergunta cadastrada.</li>
+        {% endfor %}
+    </ul>
+    <a href="" class="btn">Adicionar Nova Pergunta</a>
+</div>
+
+{% endblock %}

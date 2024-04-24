@@ -75,6 +75,18 @@ def perguntas(request):
     else :
         return render(request, 'perguntas/pergunta_de_texto.html')
 
+
+
+@login_required
+def listagem_perg_em_forms(request, id_formulario):
+    perguntas = Perguntas.objects.all()
+    print(perguntas)
+    print("aaaaaaaaaaaa")
+    return render(request, 'formulario/perguntas_form.html', {'perguntas_de_texto': perguntas})
+
+
+
+
 @login_required
 def perguntas_feitas(request):
    return render(request, 'perguntas/perguntas_feitas.html')
