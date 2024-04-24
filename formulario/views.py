@@ -66,13 +66,14 @@ def deletar_formulario(request,id_formulario):
 @login_required
 def perguntas(request):
     if request.method == 'POST' :
+        if tipo
         pergunta_de_texto = request.POST.get('pergunta de texto')
         tipo = 'texto'
         perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
     
         pergunta_intervalo = request.POST.get('pergunta de intervalo')
         tipo = 'intervalo'
-        perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
+        perguntas_de_texto = Perguntas.objects.create(pergunta_de_intervalo=pergunta_intervalo, tipo=tipo)
     
         
 
