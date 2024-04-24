@@ -1,0 +1,20 @@
+{% extends "formulario/base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">Criar pergunta - de intervalo </h2> <!-- como deixar o tipoi da perguntado listado-->
+<main>
+    <form method="post" class="box"> 
+        {% csrf_token %}
+        <div class="input-container">
+            <label for="pergunta de intervalo">Enunciado:</label>
+            <input type="text" id="enunciado" name="pergunta de intervalo" required class="input-container input">
+        </div>
+        
+        
+        <button type="submit"  class="btn">Enviar</button>
+       
+    </form>
+</main>
+
+{% endblock %}

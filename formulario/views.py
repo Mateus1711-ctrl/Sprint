@@ -70,6 +70,11 @@ def perguntas(request):
         tipo = 'texto'
         perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
     
+        pergunta_intervalo = request.POST.get('pergunta de intervalo')
+        tipo = 'intervalo'
+        perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
+    
+        
 
         return redirect('perguntas_feitas')
     else :

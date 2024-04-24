@@ -15,6 +15,16 @@ class Formulario(models.Model):
 
 class Perguntas (models.Model):
     pergunta_de_texto = models.TextField(max_length=2000, blank=True, null=True)
+    pergunta_intervalo = models.TextField(max_length=2000, blank=True, null=True)
     tipo = models.CharField(max_length=200)
+
     def __str__(self):
-        return self.pergunta_de_texto 
+        return self.pergunta_de_texto , self.pergunta_intervalo
+    
+class Intervalos(models.Model):
+    
+    intervalo = models.PositiveIntegerField()
+    
+    def __str__(self):
+        return self.intervalo
+    `
