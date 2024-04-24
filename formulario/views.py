@@ -87,7 +87,7 @@ def listagem_perguntas(request):
 # Função que adiciona pergunta ao formulário
 def listagem_formularios(request, id_pergunta):
     if request.method == 'POST':
-        all_forms = Formulario.objects.all()
+        all_forms = Formulario.objects.filter(author=request.user).order_by('-data_criacao')
         return render(request, 'formulario/adicionar_pergunta.html', {'formularios': all_forms, 'id_pergunta': id_pergunta})
     
 def adicionar_pergunta(request):
