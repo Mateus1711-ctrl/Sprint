@@ -84,6 +84,27 @@ def listagem_perguntas(request):
     perguntas = Perguntas.objects.all()
     return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
 
+# Função que adiciona pergunta ao formulário
+def listagem_formularios(request, id_pergunta):
+    if request.method == 'POST':
+        all_forms = Formulario.objects.all()
+        return render(request, 'formulario/adicionar_pergunta.html', {'formularios': all_forms, 'id_pergunta': id_pergunta})
+    
+def adicionar_pergunta(request):
+    if request.method == 'POST':
+        id_formulario = request.POST.get('id_formulario')
+        id_pergunta = request.POST.get('id_pergunta')
+        formulario = Formulario.objects.get(id=id_formulario)
+        pergunta = Perguntas.objects.get(id=id_pergunta)
+        FormularioPergunta.objects.create(formulario=formulario, pergunta=pergunta) 
+        return redirect('index')
+    else:
+        return HttpResponseRedirect('/')
+
+def listagem_perguntas(request):
+    perguntas = Perguntas.objects.all()
+    return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
+
 def deletar_perguntas(request,id_pergunta):
     perg=get_object_or_404(Perguntas,id=id_pergunta)
     if request.method=='POST':

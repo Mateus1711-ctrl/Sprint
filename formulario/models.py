@@ -18,3 +18,9 @@ class Perguntas (models.Model):
     tipo = models.CharField(max_length=200)
     def __str__(self):
         return self.pergunta_de_texto 
+    
+class FormularioPergunta(models.Model):
+    formulario = models.ForeignKey(Formulario, on_delete=models.CASCADE)
+    pergunta = models.ForeignKey(Perguntas, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.formulario.nome + ' - ' + self.pergunta.pergunta_de_texto

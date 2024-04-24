@@ -12,6 +12,11 @@
             {% csrf_token %}
             <button type="submit" class="deletar-formulario">Deletar</button>
         </form>
+
+        <form action="/adicionar-pergunta/{{pergunta.id}}", method="POST">
+            {% csrf_token %}
+            <button type="submit" class="adicionar-pergunta">Adicionar</button>
+        </form>
         {% endfor %}
 </div>
 {% endblock %}
