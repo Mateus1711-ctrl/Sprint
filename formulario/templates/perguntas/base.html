@@ -12,11 +12,14 @@
     {% if user.is_authenticated %}  
     <form action="{% url 'logout' %}" method="post">
       {% csrf_token %}
-      <button type="submit" class="sair">sair</button>
-    </form>      
+      <button type="submit" class="sair">sair</button>    
+    </form>  
+
+    <a href="{% url 'index' %}" 
+    class="btn form-success-btn">Início</a> <!-- Aparece em todas as páginas-->
 
     {% endif %}
 
-    <main class="container">{% block content %}{% endblock %}</main>
+    <main class="container">{% block content %}{% endblock %}</main> 
   </body>
 </html>
