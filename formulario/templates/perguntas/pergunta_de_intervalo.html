@@ -2,13 +2,20 @@
 
 {% block content %}
 
-<h2 class="text-center">Criar pergunta - de intervalo </h2> <!-- como deixar o tipoi da perguntado listado-->
+<h2 class="text-center">Pergunta - de intervalo </h2> <!-- como deixar o tipoi da perguntado listado-->
 <main>
     <form method="post" class="box"> 
         {% csrf_token %}
         <div class="input-container">
             <label for="pergunta de intervalo">Enunciado:</label>
             <input type="text" id="enunciado" name="pergunta de intervalo" required class="input-container input">
+            
+
+            <label for="intervalo">Escolha o tamanho do intervalo: </label>
+            <!-- problema para depois a questão de visualizar o intervalo no pdf do formulário -->
+            <input type="number" id="intervalo" name="intervalo" required class="input-container input">
+                                                                                <!-- problema: tem de deixar só positivo-->
+
         </div>
         
         
