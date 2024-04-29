@@ -74,6 +74,14 @@ def perguntas_de_texto(request):
     else :
         return render(request, 'perguntas/pergunta_de_texto.html')
 
+@login_required
+def listagem_perg_em_forms(request, id_formulario):
+    perguntas = Perguntas.objects.all()
+    print(perguntas)
+    print("aaaaaaaaaaaa")
+    return render(request, 'formulario/perguntas_form.html', {'perguntas_de_texto': perguntas})
+
+
 def perguntas_de_intervalo(request):
     if request.method == 'POST':
         enunciado = request.POST.get('pergunta de intervalo')
@@ -86,7 +94,6 @@ def perguntas_de_intervalo(request):
         return render(request, 'perguntas/pergunta_de_intervalo.html')
 
 
-    
 def seleciona_tipo(request):
     if request.method == 'POST':
         tipo_da_pergunta = request.POST.get('tipo da pergunta')
@@ -98,6 +105,7 @@ def seleciona_tipo(request):
         return redirect('perguntas_feitas')
     else :
         return render(request, 'perguntas/tipo_da_pergunta.html')
+
 
 @login_required
 def perguntas_feitas(request):
