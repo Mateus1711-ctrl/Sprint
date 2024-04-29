@@ -96,26 +96,41 @@ def listagem_perguntas(request):
     perguntas = Perguntas.objects.all()
     return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
 
-def deletar_perguntas(request,id_pergunta):
-    perg=get_object_or_404(Perguntas,id=id_pergunta)
-    if request.method=='POST':
-        perg.delete()
-        return redirect('listagem_perguntas')
+# Função que adiciona pergunta ao formulário
+def listagem_formularios(request, id_pergunta):
+    if request.method == 'POST':
+        all_forms = Formulario.objects.all()
+        return render(request, 'formulario/adicionar_pergunta.html', {'formularios': all_forms, 'id_pergunta': id_pergunta})
+    
+def adicionar_pergunta(request):
+    if request.method == 'POST':
+        id_formulario = request.POST.get('id_formulario')
+        id_pergunta = request.POST.get('id_pergunta')
+        formulario = Formulario.objects.get(id=id_formulario)
+        pergunta = Perguntas.objects.get(id=id_pergunta)
+        FormularioPergunta.objects.create(formulario=formulario, pergunta=pergunta) 
+        return redirect('index')
     else:
         return HttpResponseRedirect('/')
-# {'formularios': all_forms, 'user': request.user})
+
+def listagem_perguntas(request):
+    perguntas = Perguntas.objects.all()
+    return render(request, 'perguntas/listar_perguntas.html', {'perguntas_de_texto': perguntas})
+
+def deletar_perguntas(request,id_pergunta):
+    perg=get_object_or_404(Perguntas,id=id_pergunta)
+
+    perg.delete()
+    return redirect('listagem_perguntas')
+
+
+def editar_perguntas(request, id_pergunta):
+    perg= get_object_or_404(Perguntas, id=id_pergunta)
+    if request.method== 'POST':
+        perg.pergunta_de_texto = request.POST.get('pergunta_de_texto')
+        perg.save()
+        return redirect('listagem_perguntas')
+    else :
+        return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
     
-    # def edita_formulario(request):
-    # if request.method == 'POST':
-    #     id_formulario = request.POST.get('id_formulario')
-    #     nome = request.POST.get('nome')
-    #     descricao = request.POST.get('descricao')
-    #     formulario = Formulario.objects.get(id=id_formulario)
-    #     formulario.nome = nome
-    #     formulario.descricao = descricao
-    #     formulario.save()
-    #     return redirect('index')
-    # else:
-    #     id_formulario = request.GET.get('id_formulario')
-    #     formulario = Formulario.objects.get(id=id_formulario)
-        # return render(request, 'formulario/editar_formulario.html', {'formulario': formulario})
+    
