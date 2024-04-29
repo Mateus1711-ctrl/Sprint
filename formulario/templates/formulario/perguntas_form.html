@@ -5,12 +5,28 @@
     <i class="bi bi-arrow-left-circle-fill"></i><h2>Formulários - Perguntas</h2>
     <ul>
         {% for pergunta in perguntas_de_texto %}
-        <li>{{ pergunta.pergunta_de_texto }} - <a href="">Editar</a> | <a href="">Deletar</a></li>
+        <li>{{ pergunta.pergunta_de_texto }} - 
+            {% if pergunta.id in ids_perguntas %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id_pergunta" value="{{ pergunta.id }}">
+                <input type="hidden" name="id_formulario" value="{{ id_formulario }}">
+                <button type="submit">Remover</button>
+            </form>
+            {% else %}
+            <form action="/add-pergunta/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id_pergunta" value="{{ pergunta.id }}">
+                <input type="hidden" name="id_formulario" value="{{ id_formulario }}">
+                <button type="submit">Adicionar</button>
+            </form>
+            {% endif %}
+        </li>
         {% empty %}
         <li>Nenhuma pergunta cadastrada.</li>
         {% endfor %}
     </ul>
-    <a href="" class="btn">Adicionar Nova Pergunta</a>
+    
 </div>
 
 {% endblock %}

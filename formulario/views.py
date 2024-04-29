@@ -77,9 +77,13 @@ def perguntas_de_texto(request):
 @login_required
 def listagem_perg_em_forms(request, id_formulario):
     perguntas = Perguntas.objects.all()
-    print(perguntas)
-    print("aaaaaaaaaaaa")
-    return render(request, 'formulario/perguntas_form.html', {'perguntas_de_texto': perguntas})
+    formulario = Formulario.objects.get(id=id_formulario)
+    relacoes = FormularioPergunta.objects.filter(formulario=formulario)
+    ids_perguntas = []
+    for rel in relacoes:
+        ids_perguntas.append(rel.pergunta.id)
+
+    return render(request, 'formulario/perguntas_form.html', {'perguntas_de_texto': perguntas, 'ids_perguntas': ids_perguntas, 'id_formulario':id_formulario})
 
 
 def perguntas_de_intervalo(request):
@@ -129,7 +133,7 @@ def adicionar_pergunta(request):
         formulario = Formulario.objects.get(id=id_formulario)
         pergunta = Perguntas.objects.get(id=id_pergunta)
         FormularioPergunta.objects.create(formulario=formulario, pergunta=pergunta) 
-        return redirect('index')
+        return redirect('perguntas_forms', id_formulario=id_formulario)
     else:
         return HttpResponseRedirect('/')
 

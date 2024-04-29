@@ -19,10 +19,8 @@ urlpatterns = [
     path('adicionar-pergunta/<int:id_pergunta>',views.listagem_formularios, name='adicionar_pergunta'),
     path('add-pergunta/',views.adicionar_pergunta, name='add_pergunta'),
     path('editar-pergunta/<int:id_pergunta>', views.editar_perguntas, name='editar-pergunta'),
-    path('add-pergunta/',views.adicionar_pergunta, name='add_pergunta') ,
-    path('editar-pergunta/<int:id_pergunta>', views.editar_perguntas, name='editar-pergunta') ,
     path('selecionar-tipo/',views.seleciona_tipo, name='tipo_da_pergunta') ,
-    path('perguntas_de_intervalo/',views.perguntas_de_intervalo,name='pergunta_de_intervalo') 
+    path('perguntas_de_intervalo/',views.perguntas_de_intervalo,name='pergunta_de_intervalo')
 ]
 
 
