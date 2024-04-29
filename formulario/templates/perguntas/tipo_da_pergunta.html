@@ -1,0 +1,26 @@
+{% extends 'formulario/base.html' %}
+{% block content %}
+
+<div class="forms">
+    <i class="bi bi-arrow-left-circle-fill"></i>   <h2>Selecione o tipo da pergunta</h2>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="tipo da pergunta">Opções:</label>
+        <!-- campo hidden para passar o id da pergunta -->
+        <select name="tipo da pergunta" id="tipo da pergunta">
+            <option value="texto">texto </option>
+            <option value="intervalo">intervalo de resposta</option>
+        </select>
+
+        <button type="submit" class="adicionar-pergunta">Adicionar</button>
+    </form>
+
+
+            <!-- {% for formulario in formularios %}
+                <option value="{{ formulario.id }}">{{ formulario.nome }}</option>
+            {% endfor %} -->
+     
+    
+</div>
+{% endblock %}

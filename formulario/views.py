@@ -64,18 +64,15 @@ def deletar_formulario(request,id_formulario):
         return HttpResponseRedirect('/')
     
 @login_required
-def perguntas(request):
-    if request.method == 'POST' :
+def perguntas_de_texto(request):
+    if request.method == 'POST':
         pergunta_de_texto = request.POST.get('pergunta de texto')
         tipo = 'texto'
-        perguntas_de_texto = Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
-    
+        perguntas= Perguntas.objects.create(pergunta_de_texto=pergunta_de_texto, tipo=tipo)
 
         return redirect('perguntas_feitas')
     else :
         return render(request, 'perguntas/pergunta_de_texto.html')
-
-
 
 @login_required
 def listagem_perg_em_forms(request, id_formulario):
@@ -85,6 +82,29 @@ def listagem_perg_em_forms(request, id_formulario):
     return render(request, 'formulario/perguntas_form.html', {'perguntas_de_texto': perguntas})
 
 
+def perguntas_de_intervalo(request):
+    if request.method == 'POST':
+        enunciado = request.POST.get('pergunta de intervalo')
+        intervalo = request.POST.get('intervalo')
+        tipo = 'intervalo'
+        pergunta_de_intervalo = Perguntas.objects.create(pergunta_de_texto=enunciado, tipo=tipo)
+        Intervalos.objects.create(enunciado_pergunta=pergunta_de_intervalo, intervalo=intervalo)
+        return redirect('perguntas_feitas')
+    else :
+        return render(request, 'perguntas/pergunta_de_intervalo.html')
+
+
+def seleciona_tipo(request):
+    if request.method == 'POST':
+        tipo_da_pergunta = request.POST.get('tipo da pergunta')
+        if tipo_da_pergunta == 'texto':
+            return redirect('pergunta_de_texto')
+        elif tipo_da_pergunta == 'intervalo':  
+            return redirect('pergunta_de_intervalo')
+
+        return redirect('perguntas_feitas')
+    else :
+        return render(request, 'perguntas/tipo_da_pergunta.html')
 
 
 @login_required
@@ -99,7 +119,7 @@ def listagem_perguntas(request):
 # Função que adiciona pergunta ao formulário
 def listagem_formularios(request, id_pergunta):
     if request.method == 'POST':
-        all_forms = Formulario.objects.all()
+        all_forms = Formulario.objects.filter(author=request.user).order_by('-data_criacao')
         return render(request, 'formulario/adicionar_pergunta.html', {'formularios': all_forms, 'id_pergunta': id_pergunta})
     
 def adicionar_pergunta(request):

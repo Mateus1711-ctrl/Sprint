@@ -14,7 +14,8 @@
       {% csrf_token %}
       <button type="submit" class="sair">sair</button>
     </form>      
-
+    <a href="{% url 'index' %}" 
+    class="sair">Início</a> <!-- Aparece em todas as páginas-->
     {% endif %}
 
     <main class="container">{% block content %}{% endblock %}</main>
