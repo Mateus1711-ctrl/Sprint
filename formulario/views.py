@@ -156,5 +156,15 @@ def editar_perguntas(request, id_pergunta):
         return redirect('listagem_perguntas')
     else :
         return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
-    
-    
+
+def remover_prgunta (request) :
+    if request.method == 'POST':
+        id_formulario = request.POST.get('id_formulario')
+        id_pergunta = request.POST.get('id_pergunta')
+        formulario = Formulario.objects.get(id=id_formulario)
+        pergunta = Perguntas.objects.get(id=id_pergunta)
+        deletar = FormularioPergunta.objects.filter(formulario=formulario, pergunta=pergunta) 
+        deletar.delete()
+        return redirect('perguntas_forms', id_formulario=id_formulario)
+    else:
+        return HttpResponseRedirect('/')   
