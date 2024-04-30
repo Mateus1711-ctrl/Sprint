@@ -7,7 +7,7 @@
         {% for pergunta in perguntas_de_texto %}
         <li>{{ pergunta.pergunta_de_texto }} - 
             {% if pergunta.id in ids_perguntas %}
-            <form action="" method="post">
+            <form action="/remover-pergunta/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="id_pergunta" value="{{ pergunta.id }}">
                 <input type="hidden" name="id_formulario" value="{{ id_formulario }}">
