@@ -173,16 +173,24 @@ def remover_prgunta (request) :
     else:
         return HttpResponseRedirect('/')   
 
-def gerar_pdf(request):
-    # Create a file-like buffer to receive PDF data.
+def gerar_pdf(request, id_formulario):
+
     buffer = io.BytesIO()
 
-    # Create the PDF object, using the buffer as its "file."
     p = canvas.Canvas(buffer)
 
-    # Draw things on the PDF. Here's where the PDF generation happens.
+    formulario = Formulario.objects.get(id=id_formulario)
+    formP = FormularioPergunta.objects.filter(formulario=formulario) # retorna lista (de objetos) vários pares forms + perguntas
+    x = 20
+    y = 480
+    p.drawString(230,720, formulario.nome)
+    p.drawString(200,600, formulario.descricao)
+    for fP in formP:
+        p.drawString(x, y, fP.pergunta.pergunta_de_texto) # definir uma posição para cada pergunta
+        x += 0
+        y -= 150
+        # print(fP.pergunta.pergunta_de_texto)
     # See the ReportLab documentation for the full list of functionality.
-    p.drawString(525, 5, "Formulário")
 
     # Close the PDF object cleanly, and we're done.
     p.showPage()
