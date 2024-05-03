@@ -190,23 +190,30 @@ def gerar_pdf(request, id_formulario):
     p = canvas.Canvas(buffer)
 
     formulario = Formulario.objects.get(id=id_formulario)
-    formP = FormularioPergunta.objects.filter(formulario=formulario) # retorna lista (de objetos) vários pares forms + perguntas
+    formP = FormularioPergunta.objects.filter(formulario=formulario)
+
     x = 20
     y = 480
-    p.drawString(230,720, formulario.nome)
-    p.drawString(200,600, formulario.descricao)
-    for fP in formP:
-        p.drawString(x, y, fP.pergunta.pergunta_de_texto) # definir uma posição para cada pergunta
-        x += 0
-        y -= 150
-        # print(fP.pergunta.pergunta_de_texto)
-    # See the ReportLab documentation for the full list of functionality.
+    page_height = 720  # Assuming a standard A4 page height
 
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
+    p.drawString(230, 720, formulario.nome)
+    p.drawString(200, 600, formulario.descricao)
+
+    space_between_questions = 30  # Adjust this value for desired spacing
+
+    for fP in formP:
+        if y - space_between_questions <= 50:  # If remaining space on the page is not sufficient, start a new page
+            p.showPage()  # Start a new page
+            p.drawString(230, 720, formulario.nome)
+            p.drawString(200, 600, formulario.descricao)
+            y = page_height - 120  # Reset y position for the new page
+
+        p.drawString(x, y, fP.pergunta.pergunta_de_texto)
+        y -= space_between_questions + 150  # Move to the next line with space between questions
+
+    p.showPage()  # Close the last page
+
     p.save()
 
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename='formulario.pdf')
