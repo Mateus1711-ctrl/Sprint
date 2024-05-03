@@ -34,6 +34,14 @@
                     {% csrf_token %}
                     <button type="submit" class="editar-formulario">Editar</button>
                 </form>
+
+                <form action="{% url 'gerar_pdf' formulario.id %}" method="GET"> <!-- tanto faz ser get ou post-->
+                    {% csrf_token %}
+                    <button type="submit" class="gerar-pdf">Gerar PDF</button>
+                </form>
+                
+
+
                 <form action="{% url 'deletar' formulario.id %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="deletar-formulario">Deletar</button>

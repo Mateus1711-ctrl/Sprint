@@ -2,6 +2,10 @@ from django.shortcuts import redirect, render,get_object_or_404,HttpResponseRedi
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+
 
 def cadastro(request):
     if request.method == 'POST':
@@ -168,3 +172,31 @@ def remover_pergunta (request) :
         return redirect('perguntas_forms', id_formulario=id_formulario)
     else:
         return HttpResponseRedirect('/')   
+
+def gerar_pdf(request, id_formulario):
+
+    buffer = io.BytesIO()
+
+    p = canvas.Canvas(buffer)
+
+    formulario = Formulario.objects.get(id=id_formulario)
+    formP = FormularioPergunta.objects.filter(formulario=formulario) # retorna lista (de objetos) vários pares forms + perguntas
+    x = 20
+    y = 480
+    p.drawString(230,720, formulario.nome)
+    p.drawString(200,600, formulario.descricao)
+    for fP in formP:
+        p.drawString(x, y, fP.pergunta.pergunta_de_texto) # definir uma posição para cada pergunta
+        x += 0
+        y -= 150
+        # print(fP.pergunta.pergunta_de_texto)
+    # See the ReportLab documentation for the full list of functionality.
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename='formulario.pdf')
