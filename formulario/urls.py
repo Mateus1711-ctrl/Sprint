@@ -24,5 +24,3 @@ urlpatterns = [
     path('remover-pergunta/', views.remover_prgunta, name='remover_pergunta') ,
     path('gerar-pdf/<int:id_formulario>/', views.gerar_pdf, name='gerar_pdf')
     ]
-
-
