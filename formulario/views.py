@@ -153,13 +153,23 @@ def deletar_perguntas(request,id_pergunta):
 
 
 def editar_perguntas(request, id_pergunta):
-    perg= get_object_or_404(Perguntas, id=id_pergunta)
+    intervalo = ''
+    perg = get_object_or_404(Perguntas, id=id_pergunta)
+    if perg.tipo == 'intervalo':
+        intervalo = get_object_or_404(Intervalos, enunciado_pergunta = perg)
+
+        perg.save()
     if request.method== 'POST':
         perg.pergunta_de_texto = request.POST.get('pergunta_de_texto')
         perg.save()
-        return redirect('listagem_perguntas')
+
+        if perg.tipo == 'intervalo':
+            intervalo.intervalo = request.POST.get('pergunta_de_intervalo')
+            intervalo.save()
+        
+        return redirect('listagem_perguntas')                                       ##-- nome inventado que vai ser usado no template
     else :
-        return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
+        return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg , 'intervalo': intervalo})
 
 def remover_prgunta (request) :
     if request.method == 'POST':

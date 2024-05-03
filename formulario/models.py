@@ -14,7 +14,7 @@ class Formulario(models.Model):
         return self.nome
 
 class Perguntas (models.Model):
-    pergunta_de_texto = models.TextField(max_length=2000, blank=True, null=True)
+    pergunta_de_texto = models.TextField(max_length=2000, blank=True, null=True) ## classe para todos os tipos de pergunta (nome da variável está específico, mas devemos ignorar, só não trocamos porque ia quebrar todo o dódigo - ficaria melhor: 'pergunta')
     tipo = models.CharField(max_length=200)
 
     def __str__(self):

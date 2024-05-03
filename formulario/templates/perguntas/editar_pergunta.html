@@ -7,11 +7,18 @@
     <form method="post" class="box"> 
         {% csrf_token %}
         <div class="input-container">
-            <label for="pergunta_de_texto">Pergunta:</label>
+            <label for="pergunta_de_texto">Enunciado:</label>
             <input type="text" id="pergunta_de_texto" name="pergunta_de_texto" required class="input-container input" value="{{pergunta.pergunta_de_texto}}">
+            {% if  pergunta.tipo == 'intervalo' %}
+            <label for="pergunta_de_intervalo">Intervalo:</label>
+            <input type="number" id="pergunta_de_intervalo" name="pergunta_de_intervalo" required class="input-container input" value="{{intervalo.intervalo}}">
+                                <!-- não funciona esse id, estamos usando o name como ref                                                objeto da view e campo da model-->                         
+            {% endif %}
         </div> 
         <button type="submit" class="btn">salvar</button>
     </form>
 </main>
+
+
 
 {% endblock %}
