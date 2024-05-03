@@ -157,7 +157,7 @@ def editar_perguntas(request, id_pergunta):
     else :
         return render(request,'perguntas/editar_pergunta.html', {'pergunta': perg})
 
-def remover_prgunta (request) :
+def remover_pergunta (request) :
     if request.method == 'POST':
         id_formulario = request.POST.get('id_formulario')
         id_pergunta = request.POST.get('id_pergunta')
