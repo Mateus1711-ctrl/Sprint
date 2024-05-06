@@ -22,5 +22,6 @@ urlpatterns = [
     path('selecionar-tipo/',views.seleciona_tipo, name='tipo_da_pergunta') ,
     path('perguntas_de_intervalo/',views.perguntas_de_intervalo,name='pergunta_de_intervalo'),
     path('remover-pergunta/', views.remover_pergunta, name='remover_pergunta') ,
-    path('gerar-pdf/<int:id_formulario>/', views.gerar_pdf, name='gerar_pdf')
+    path('gerar-pdf/<int:id_formulario>/', views.gerar_pdf, name='gerar_pdf'),
+    path('formulario/<int:id_formulario>/', views.form_detalhes, name='formulario'),
     ]
