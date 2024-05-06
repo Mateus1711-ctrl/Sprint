@@ -1,3 +1,80 @@
+.link {
+    color: white;
+    text-decoration: none;
+
+}
+.link:visited{
+    color: white;
+}
+.link:hover{
+    color: black;
+}
+.container-unico {
+    max-width: 800px;
+    margin: auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Cabeçalho do formulário */
+.cabecalho-formulario {
+    text-align: center;
+}
+
+
+.titulo-principal {
+    font-size: 24px;
+    color: #1e90ff; /* Mudando para um tom de azul */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+
+/* Descrição do formulário */
+.descricao-form {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Estilização da lista de perguntas */
+.lista-perguntas {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item-pergunta {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.item-pergunta:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Títulos das perguntas */
+.titulo-pergunta {
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
 .para_lado{
     flex-direction: row;
     display: flex;
