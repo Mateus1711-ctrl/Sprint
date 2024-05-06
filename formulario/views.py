@@ -55,6 +55,11 @@ def edita_formulario(request,id_formulario):
     else:
         return render(request, 'formulario/editar_formulario.html', {'formulario': form})
 
+def form_detalhes(request,id_formulario):
+    form = get_object_or_404(Formulario,id=id_formulario)
+    perguntas = FormularioPergunta.objects.filter(formulario=form)
+    return render(request, 'formulario/form_detalhes.html', {'formulario': form, 'perguntas': perguntas})
+
 @login_required 
 def formulario_feito(request) :
     return render(request, 'formulario/formulario_feito.html')
