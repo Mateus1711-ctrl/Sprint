@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Detail</title>
+</head>
+<body>
+    <h1>{{ form.nome }}</h1>
+    <p>{{ form.descricao }}</p>
+    
+    <h2>Questions:</h2>
+    <ul>
+        {% for form_pergunta in form.formulariopergunta_set.all %}
+            <li>{{ form_pergunta.pergunta.pergunta_de_texto }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

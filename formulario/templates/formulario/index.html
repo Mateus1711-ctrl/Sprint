@@ -26,7 +26,7 @@
 
    
         {% for formulario in formularios %}
-            <p class="caixas container">{{ formulario.nome }}</p>
+            <a href="{% url 'formulario' formulario.id %}" class="caixas container"> {{formulario.nome}}</a>  
             <p class="container caixas_descricao">{{formulario.descricao}}</p>
             <div class="para_lado">
 

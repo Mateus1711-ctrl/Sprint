@@ -130,6 +130,11 @@ def listagem_formularios(request, id_pergunta):
         all_forms = Formulario.objects.filter(author=request.user).order_by('-data_criacao')
         return render(request, 'formulario/adicionar_pergunta.html', {'formularios': all_forms, 'id_pergunta': id_pergunta})
     
+def form_detalhes(request, id_formulario):
+    form = Formulario.objects.get(id=id_formulario)
+    perguntas = FormularioPergunta.objects.filter(formulario=form)
+    return render(request, 'formulario/formulario.html', {'form': form, 'perguntas': perguntas})
+    
 def adicionar_pergunta(request):
     if request.method == 'POST':
         id_formulario = request.POST.get('id_formulario')
