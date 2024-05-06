@@ -1,8 +1,6 @@
 {% extends "formulario/base.html" %}
 
-
 {% block content %}
-
 
 <header>
     <h1>Sistema de Gestão de Formulários</h1>
@@ -13,47 +11,35 @@
         <p>Com nosso sistema, você pode criar formulários personalizados e gerar PDFs para suas pesquisas.</p>
         <div class="buttons-container">
             <a class="button" href="/novo">Criar Novo Formulário</a>
-        </div>
-
-        <div class="buttons-container">
-        <a class="button" href="/selecionar-tipo/">Criar nova pergunta</a>
-        </div>
-        <div class="buttons-container">
+            <a class="button" href="/selecionar-tipo/">Criar nova pergunta</a>
             <a class="button" href="{% url 'listagem_perguntas' %}" >Consulte aqui as perguntas já existentes</a>
         </div>
     </div>
 
-
-   
-        {% for formulario in formularios %}
-            <a href="{% url 'formulario' formulario.id %}" class="caixas container"> {{formulario.nome}}</a>  
-            <p class="container caixas_descricao">{{formulario.descricao}}</p>
-            <div class="para_lado">
-
-                <form action="{% url 'editar' formulario.id %}" method="GET">
-                    {% csrf_token %}
-                    <button type="submit" class="editar-formulario">Editar</button>
-                </form>
-
-                <form action="{% url 'gerar_pdf' formulario.id %}" method="GET"> <!-- tanto faz ser get ou post-->
-                    {% csrf_token %}
-                    <button type="submit" class="gerar-pdf">Gerar PDF</button>
-                </form>
-                
-
-
-                <form action="{% url 'deletar' formulario.id %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" class="deletar-formulario">Deletar</button>
-                </form>
-            </div>
-            
-        {% endfor %}
-     
+    {% for formulario in formularios %}
+    <div class="caixas container">
+        <a href="{% url 'formulario' formulario.id %}" class="link">{{ formulario.nome }}</a>  
+        <p class="caixas-descricao">{{ formulario.descricao }}</p>
+        <div class="para_lado">
+            <form action="{% url 'editar' formulario.id %}" method="GET">
+                {% csrf_token %}
+                <button type="submit" class="editar-formulario">Editar</button>
+            </form>
+            <form action="{% url 'gerar_pdf' formulario.id %}" method="GET">
+                {% csrf_token %}
+                <button type="submit" class="gerar-pdf">Gerar PDF</button>
+            </form>
+            <form action="{% url 'deletar' formulario.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="deletar-formulario">Deletar</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
 </main>
-
 
 <footer>
     <p>&copy; 2024 Sistema de Gestão de Formulários. Todos os direitos reservados.</p>
 </footer>
+
 {% endblock %}
