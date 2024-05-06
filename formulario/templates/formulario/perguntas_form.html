@@ -11,14 +11,14 @@
                 {% csrf_token %}
                 <input type="hidden" name="id_pergunta" value="{{ pergunta.id }}">
                 <input type="hidden" name="id_formulario" value="{{ id_formulario }}">
-                <button type="submit">Remover</button>
+                <button type="submit" class="button-vermelho">Remover</button>
             </form>
             {% else %}
             <form action="/add-pergunta/" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="id_pergunta" value="{{ pergunta.id }}">
                 <input type="hidden" name="id_formulario" value="{{ id_formulario }}">
-                <button type="submit">Adicionar</button>
+                <button type="submit" class="button">Adicionar</button>
             </form>
             {% endif %}
         </li>

@@ -27,7 +27,7 @@
             </form>
             <form action="{% url 'gerar_pdf' formulario.id %}" method="GET">
                 {% csrf_token %}
-                <button type="submit" class="gerar-pdf">Gerar PDF</button>
+                <button type="submit" class="button-pdf ">Gerar PDF</button>
             </form>
             <form action="{% url 'deletar' formulario.id %}" method="POST">
                 {% csrf_token %}
