@@ -202,15 +202,15 @@ def gerar_pdf(request, id_formulario):
     page_height = 720  # Assuming a standard A4 page height
 
     p.drawString(230, 720, formulario.nome)
-    p.drawString(200, 600, formulario.descricao)
+    p.drawString(0, 600, formulario.descricao)
 
-    space_between_questions = 30  # Adjust this value for desired spacing
+    space_between_questions = 100  # Adjust this value for desired spacing
 
     for fP in formP:
         if y - space_between_questions <= 50:  # If remaining space on the page is not sufficient, start a new page
             p.showPage()  # Start a new page
             p.drawString(230, 720, formulario.nome)
-            p.drawString(200, 600, formulario.descricao)
+            p.drawString(0, 660, formulario.descricao)
             y = page_height - 120  # Reset y position for the new page
 
         p.drawString(x, y, fP.pergunta.pergunta_de_texto)
