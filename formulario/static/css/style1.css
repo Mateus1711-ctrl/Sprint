@@ -1,3 +1,36 @@
+.button-vermelho {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff1e00;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+.button-vermelho:hover {
+    background-color: #b32400;
+}
+
+.button-pdf {
+    background-color: #2655d6; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.button-pdf:hover {
+    background-color: #b32400;
+}
+
+
+
+
+
 .link {
     color: white;
     text-decoration: none;
