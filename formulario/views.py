@@ -54,11 +54,9 @@ def edita_formulario(request,id_formulario):
         return redirect('index')
     else:
         return render(request, 'formulario/editar_formulario.html', {'formulario': form})
-
-def form_detalhes(request,id_formulario):
-    form = get_object_or_404(Formulario,id=id_formulario)
-    perguntas = FormularioPergunta.objects.filter(formulario=form)
-    return render(request, 'formulario/formulario.html', {'formulario': form, 'perguntas': perguntas})
+def form_detalhes(request, id_formulario):
+    form = Formulario.objects.prefetch_related('formulariopergunta_set__pergunta').get(id=id_formulario)
+    return render(request, 'formulario/formulario.html', {'form': form})
 
 @login_required 
 def formulario_feito(request) :
