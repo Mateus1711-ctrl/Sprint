@@ -25,3 +25,6 @@ urlpatterns = [
     path('gerar-pdf/<int:id_formulario>/', views.gerar_pdf, name='gerar_pdf'),
     path('formulario/<int:id_formulario>/', views.form_detalhes, name='formulario'),
     ]
+
+
+#{% url 'perguntas_forms' formulario.id %}
